@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Excel/CSV File</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="items">
+  <img src="{{ url_for('static', filename='images/mag.jpg') }}" alt="Sample Image" width="200" />
+        <h2>Madinah Haram O&M Projects Assets Taging Stickers</h2>
+        <h4>
+          "عقد "تنفيد اعمال صيانة ونظافة و تشغيل وسقياالمسجد النبوى الشريف"
+        </h4>
+    </div>
+    
+    <form action="/upload" method="post" enctype="multipart/form-data" class="upload-form">
+        <div>
+          <label for="file-upload" class="custom-file-upload">📂 Choose File</label>
+           <span id="file-chosen">No file chosen</span>
+        </div>
+      <input id="file-upload" type="file" name="file" accept=".csv,.xls,.xlsx" required>
+      <button type="submit">Generate QR Codes</button>
+    </form>
+
+  {% if qr_codes %}
+  
+    <h2>Generated QR Codes:</h2>
+
+    <!-- Print Button -->
+    <button onclick="window.print()" class="print-btn">🖨️ Print QR Codes</button>
+
+ 
+
+    <!-- QR Gallery -->
+    <div class="qr-gallery">
+      {% for qr in qr_codes %}
+        <div class="qr-box">
+          <img src="data:image/png;base64,{{ qr }}" alt="QR Code">
+        </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+
+
+  <script>
+  const fileInput = document.getElementById("file-upload");
+  const fileChosen = document.getElementById("file-chosen");
+
+  fileInput.addEventListener("change", function () {
+    if (fileInput.files.length > 0) {
+      fileChosen.textContent = fileInput.files[0].name;
+    } else {
+      fileChosen.textContent = "No file chosen";
+    }
+  });
+</script>
+</body>
+</html>
