@@ -1,5 +1,16 @@
-# flask
-# pandas
-# qrcode
-# openpyxl
-# xlrd
+# Flask framework for web app
+Flask==2.3.2
+
+# QR code generator
+qrcode==7.4.2
+
+# Image processing (qrcode ko PNG/JPEG me save karne ke liye)
+Pillow==10.0.0
+
+# Data handling for CSV/Excel
+pandas==2.1.0
+openpyxl==3.1.2   # for .xlsx
+xlrd==2.0.1       # for .xls
+
+# Production WSGI server (Render/Heroku ke liye)
+gunicorn==21.2.0
