@@ -8,7 +8,7 @@ qrcode==7.4.2
 Pillow==11.0.0 --only-binary=:all:
 
 # For Excel / CSV
-pandas==2.1.0  
+pandas==2.3.2
 openpyxl==3.1.2  
 xlrd==2.0.1  
 
